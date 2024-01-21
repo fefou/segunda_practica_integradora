@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const usuariosEsquema = new mongoose.Schema(
     {
-        nombre: String,
+        nombre: {type: String},
         email: {
             type: String,
             required: true,
@@ -12,7 +12,8 @@ const usuariosEsquema = new mongoose.Schema(
         rol: {
             type: String,
             default: 'user'
-        }
+        },
+      
 
     }, {strict: false},
     {

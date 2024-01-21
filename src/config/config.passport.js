@@ -4,6 +4,7 @@ import { usuariosModelo } from '../dao/models/users.model.js'
 import { creaHash } from '../utils.js'
 import { validaPassword } from '../utils.js'
 import github from 'passport-github2'
+import { cartsModelo } from '../dao/models/carts.model.js'
 
 export const inicializarPassport = () => {
 
@@ -31,7 +32,9 @@ export const inicializarPassport = () => {
 
                 let usuario
                 try {
-                    usuario = await usuariosModelo.create({ nombre, email, password })
+                    const newCart = await cartsModelo.create({ products: [] })
+                    const cartId = newCart._id
+                    usuario = await usuariosModelo.create({ nombre, email, password, cartId })
                     // res.redirect(`/login?mensaje=Usuario ${email}registrado correctamente`)
                     return done(null, usuario)
                 } catch (error) {
@@ -52,21 +55,7 @@ export const inicializarPassport = () => {
         },
         async (username, password, done) => {
             try {
-                // let { email, password } = req.body
-
-                // // Usuario administrador hardcodeado
-                // const adminEmail = 'adminCoder@coder.com';
-                // const adminPassword = 'adminCod3r123';
-
-                // if (req.user.email === adminEmail && password === adminPassword) {
-                //     // Si las credenciales corresponden al usuario administrador, crea la sesión
-                //     req.session.usuario = {
-                //         nombre: 'Admin',
-                //         email: adminEmail,
-                //         rol: 'admin'
-                //     };
-                //     return res.redirect(`/realtimeproducts?mensajeBienvenida=Bienvenido ${req.session.user.nombre}, su rol es ${req.session.usuario.rol}`);
-                // }
+               
 
                 if (!username || !password) {
                     // return res.redirect('/login?error=Complete todos los datos')
