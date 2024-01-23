@@ -38,10 +38,10 @@ router.post('/login', passport.authenticate('login', { failureRedirect: '/api/se
     console.log(req.user)
 
     req.session.usuario = {
-        nombre: req.user.nombre, email: req.user.email, rol: req.user.rol
+        nombre: req.user.first_name, email: req.user.email, rol: req.user.rol
     }
 
-    res.redirect(`/realtimeproducts?mensajeBienvenida=Bienvenido ${req.user.nombre}, su rol es ${req.user.rol}`)
+    res.redirect(`/realtimeproducts?mensajeBienvenida=Bienvenido ${req.user.first_name}, su rol es ${req.user.rol}`)
 
 })
 

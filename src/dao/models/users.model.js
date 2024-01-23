@@ -1,8 +1,19 @@
 import mongoose from "mongoose";
 
 const usuariosEsquema = new mongoose.Schema(
+
+    // first_name:String,
+    // last_name:String,
+    // email:String (único)
+    // age:Number,
+    // password:String(Hash)
+    // cart:Id con referencia a Carts
+    // role:String(default:’user’)
+
     {
-        nombre: {type: String},
+        first_name: { type: String },
+        // last_name: { type: String },
+        // age: { type: Number },
         email: {
             type: String,
             required: true,
@@ -13,9 +24,10 @@ const usuariosEsquema = new mongoose.Schema(
             type: String,
             default: 'user'
         },
-      
 
-    }, {strict: false},
+
+
+    }, { strict: false },
     {
         timestamps: {
             updateAt: "FechaUltMod", createdAt: "FechaAlta"
