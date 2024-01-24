@@ -36,7 +36,7 @@ router.get('/errorLogin', (req, res) => {
 router.post('/login', passport.authenticate('login', { failureRedirect: '/api/sessions/errorLogin' }), async (req, res) => {
 
     console.log(req.user)
-
+    
     req.session.usuario = {
         nombre: req.user.first_name, email: req.user.email, rol: req.user.rol
     }
@@ -53,7 +53,6 @@ router.post('/register', passport.authenticate('registro', { failureRedirect: '/
 
     let { email } = req.body
 
-   
     res.redirect(`/login?mensaje=Usuario ${email}registrado correctamente`)
 })
 

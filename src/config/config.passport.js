@@ -15,8 +15,8 @@ export const inicializarPassport = () => {
         async (req, username, password, done) => {
             try {
                 console.log("estrategia local registro de passport")
-                let { first_name, email } = req.body
-                if (!first_name || !email || !password) {
+                let { first_name, email, age, last_name } = req.body
+                if (!first_name || !last_name  || !email || !password || !age) {
                     // return res.redirect('/register?error=Complete todos los datos')
                     return done(null, false)
                 }
@@ -34,7 +34,7 @@ export const inicializarPassport = () => {
                 try {
                     const newCart = await cartsModelo.create({ products: [] })
                     const cartId = newCart._id
-                    usuario = await usuariosModelo.create({ first_name, email, password, cartId })
+                    usuario = await usuariosModelo.create({ first_name, last_name, age, email, password, cartId })
                     // res.redirect(`/login?mensaje=Usuario ${email}registrado correctamente`)
                     return done(null, usuario)
                 } catch (error) {

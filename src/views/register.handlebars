@@ -6,8 +6,6 @@
     {{#if error}}
     <div style="color: red;">{{error}}</div>
     {{/if}}
-
-
     {{!-- // first_name:String,
     // last_name:String,
     // email:String (único)
@@ -15,10 +13,9 @@
     // password:String(Hash)
     // cart:Id con referencia a Carts
     // role:String(default:’user’) --}}
-
     <input type="text" name="first_name" placeholder="nombre">
-    {{!-- <input type="text" name="last_name" placeholder="apellido"> --}}
-    {{!-- <input type="number" name="age" placeholder="edad"> --}}
+    <input type="text" name="last_name" placeholder="apellido">
+    <input type="number" name="age" placeholder="edad">
     <input type="email" name="email" placeholder="email">
     <input type="password" name="password" placeholder="password">    
     <input type="submit" value="Registrar">

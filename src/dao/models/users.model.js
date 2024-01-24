@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const usuariosEsquema = new mongoose.Schema(
-
     // first_name:String,
     // last_name:String,
     // email:String (único)
@@ -9,11 +8,10 @@ const usuariosEsquema = new mongoose.Schema(
     // password:String(Hash)
     // cart:Id con referencia a Carts
     // role:String(default:’user’)
-
     {
         first_name: { type: String },
-        // last_name: { type: String },
-        // age: { type: Number },
+        last_name: { type: String },
+        age: { type: Number },
         email: {
             type: String,
             required: true,
@@ -25,8 +23,6 @@ const usuariosEsquema = new mongoose.Schema(
             default: 'user'
         },
 
-
-
     }, { strict: false },
     {
         timestamps: {
@@ -34,5 +30,4 @@ const usuariosEsquema = new mongoose.Schema(
         }
     }
 )
-
 export const usuariosModelo = mongoose.model("usuarios", usuariosEsquema)
